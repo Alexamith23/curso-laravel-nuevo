@@ -1,0 +1,37 @@
+# Build a registration system in mere min
+
+Muy bien, pasemos a la autenticación, muéstrame para construir un nuevo proyecto, lo llamaré larevel6 nuevamente, habrá un CD allí y luego vamos a extraer un paquete de primera parte a través del composeer. Laravel requiere laravel ey y yo instalará esto como una dependencia de tip, así que ahora.
+
+    composer require laravel/ui --dev
+
+    php artisan  ui vue  --auth
+
+Finalmente, quiere que instalemos nuestras dependencias de desarrollo y luego compilemos sus activos y estamos listos para comenzar, así que ahora, antes de ver esto en un navegador.
+
+finalmente ganaron lo último en su descanso, mientras que verá esta sección aquí, así que hemos tenido un hogar para su tablero y luego también las diversas rutas para su sistema de registro que se inclinarán aquí si ejecuta la ruta de incendio de PHP lista puedes hacer todas las rutas registradas para tu proyecto.
+
+Entendiéndolo, pero por ahora para el rápido 62nd Cliff Notes, piense en el middleware como capas de una cebolla, así que si desea llegar al núcleo de la unión o al núcleo de su aplicación que utilizo para mi primera, recorra las diversas capas que usted tienen que despegar esas capas, por lo que en este caso estamos diciendo que está bien antes de que el usuario pueda obtener esta acción en esta vista, primero debe atravesar esta capa o middleware y ese metal donde se llama. Debes iniciar sesión para poder pasar a la siguiente capa de cebolla y así es como funciona para que puedas verlas todas en cualquier lugar aquí y, de hecho, incluso puedes crear la tuya propia y te mostraré todo sobre eso. en una lección futura, pero por ahora todo lo que necesita saber es que así es como confirmamos la autenticación no muy rápido, aunque puede hacerlo de dos maneras diferentes y quiero mostrarle esto porque en la naturaleza verá ambos formularios una vez más. en este momento, cualquier invitado puede acceder a esta página y eso se debe a los comentarios sobre ese middleware alternativamente y creo que aún más común, de hecho, verá que se hace referencia al medio en la milla de rutas y puede hacer referencia a él encadenando a su ruta principal ahora Vuelvo y actualizo una vez más, tienes que estar autenticado para acceder a esa página, así que John.
+
+![vagrant](rutas.png "vagrant")
+
+![vagrant](rutas.png "vagrant")
+
+Por defecto quedaría así
+
+![vagrant](if.png "vagrant")
+
+Entonces, si actualizo ahora que no hemos iniciado sesión, no vemos nada en absoluto la próxima semana, el valor predeterminado es laravel como antes, así que ahora supongo que veremos esto o si inicias sesión y regresas a la página de inicio ahora. Sin embargo, ves el encabezado diferente porque esto es tan común que podemos twittearlo.
+
+De acuerdo, ahora no voy a mostrarte, pero obtienes exactamente lo mismo y se traduce básicamente en el mismo cheque que a veces, aunque querrás hacer lo contrario, lo opuesto a apagado es invitado, por lo que podríamos decir por favor firme. -en XO y, por supuesto, aún podrías hacer otra cosa, lo mismo funcionará, así que ahora, si actualizo, no vemos nada porque hemos iniciado sesión, pero nuevamente para los usuarios de incógnito, verán el encabezado correcto. ahora tenga un sistema de registro completo en minutos.
+
+# The password reset flow
+
+Mientras estamos en el tema de una indicación, tomemos un momento para discutir el restablecimiento de contraseña primero comenzará con el flujo de trabajo, así que imagino que ella quiere iniciar sesión pero primero olvidaron su contraseña, hacen clic en un enlace de contraseña olvidada para proporcionar su dirección de correo electrónico una vez que los formularios envían dentro de preparar un token único y luego adjuntarlo a la cuenta del usuario en la base de datos la próxima semana, envíe un correo electrónico al usuario y es parte de ese correo electrónico, incluimos un enlace a su sitio web que contendría el token único y así es como confirmamos que la persona que solicitó el restablecimiento también es la persona que posee esa dirección de correo electrónico, finalmente una vez que el usuario hace clic en ese enlace, se envía de vuelta a nuestro sitio, nuestro servidor verifica el token en ese enlace y si todo verifica el El usuario puede completar el formulario para establecer una nueva contraseña y sí, si estaba haciendo esto desde cero, este sistema.
+
+![vagrant](reglas.png "vagrant")
+
+Flujo de trabajo básico: la característica básica que implementaría, pero echemos un vistazo, retrocedamos y si inicié sesión, ya tenemos el enlace Olvidé la contraseña para que se encargue del primer clic. Olvidé la contraseña. nuestra dirección de correo electrónico, pero creo que se sentirá cuando hagamos clic en esto y se dará cuenta de que está relacionado con la Ms de transporte SMTP porque nuevamente está tratando de enviar un correo electrónico, pero debido a que tenemos una nueva instalación de laravel, ni siquiera nos hemos imaginado que vayamos a nuestro. Anne v archivo y si me desplazo hacia abajo aquí están las configuraciones predeterminadas para el correo y el curso, puede ir a los detalles y puede corregir el correo electrónico Final en aquí es donde se hará referencia a todas estas variables de entorno, así que ahora tenemos varios controladores aquí SMTP podríamos pasar por mailgun, simplemente podemos iniciar sesión en un archivo que podríamos pasar por el matasellos y fue agradable al respecto, puede actualizar el controlador pero aún usar exactamente la misma interfaz para enviar el correo electrónico que veremos en nuestro caso, está predeterminado en SMTP y está usando un servicio llamado me on trap, que es realmente necesario, le permite probar el correo electrónico en el escenario del mundo real más real posible, pero en última instancia, no está diciendo que todos los correos electrónicos que se envían a este servidor de prueba no lo muestran que en un episodio futuro, pero por ahora, simplemente sigamos con el controlador de registro, esto significa que cada vez que envíe un correo electrónico, simplemente lo registraremos en un archivo aquí mismo, así que volveremos e intentaremos nuevamente, pero muy rápido si voy a restablecer la contraseña s creó ese nuevo registro, pero luego la cara del correo electrónico.
+
+Fluya en cuestión de segundos ahora si desea un crédito adicional si es como yo, le gustaría saber qué está pasando detrás de escena, así que eche un vistazo a sus controladores, aquí está el directorio de su oficina y aquí vamos. Olvidé el controlador de contraseña, así que trabajemos en esto muy rápido. Comenzaré por averiguar dónde está el punto correcto, así que si ejecutamos nuestra lista de rutas si el usuario necesita restablecer su correo electrónico, lo arreglarán este punto final que cargará la contraseña olvidada el controlador y la inacción se llama mostrar formulario de solicitud de enlace.
+
+Finalmente termine, así que sé que esto puede complicarse bastante rápido y no espero que lo entienda todo. Solo quiero que venga para el viaje. Validamos la solicitud. Una vez más usamos el corredor de contraseñas para restablecer el correo electrónico, pero es parte de eso hemos revisado este cierre que en realidad actualiza al usuario para que pueda ver que configuramos la contraseña del usuario, restablecemos un token, persistimos, disparamos un evento y luego iniciamos sesión con el usuario y eso es básicamente todo en la mejor parte. realmente no necesitas saber nada de eso porque laravel ofrece esto listo para usar, simplemente funciona.

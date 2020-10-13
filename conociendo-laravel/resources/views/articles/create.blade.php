@@ -36,6 +36,21 @@
                     </div>
                 </div>
                 <div class="field">
+                    <label for="body" class="label">Tags</label>
+                    <div class="control">
+                        <select class="textarea @error('body') is-danger" name="body" id="body" cols="30" rows="10">{{ old('body') }}</textarea>
+                        <select name="tags[]" id="" multiple>
+                            @foreach
+                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                            @endforeach
+
+                        </select>
+                        @error('tags')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+                <div class="field">
                     <div class="control">
                         <button class="button is-link" type="submit">Submit</button>
                     </div>

@@ -8,7 +8,14 @@ use Illuminate\Http\Request;
 class ArticlesController extends Controller
 {
     public function index(){
-        $article = Article::latest()->get();
+
+        if(request('tag')){
+            $articles = Tag::where('name',request('tag'))->firstOrFail()->articles;
+            
+        }else{
+            $article = Article::latest()->get();
+        }
+        
         return view('articles.index',['articles'=>$article]);
     }
     public function show(Article $article){
@@ -17,12 +24,30 @@ class ArticlesController extends Controller
         return redirect(route('articles.show', $article));
     }
     public function create(){
-        return view('articles.show');
+
+        return view('articles.show',['tags'=> Tag::all()]);
     }
+
+
+
     public function store(){
-        Article::create($this->validateArticle());
+        $this->validateArticle();
+        
+        $article  = new Article(request(['title','excerpt','body']));
+        $article->user_id = 1;
+        $article->save();
+        $articles->tags()->attach(request('tags'));
         return redirect('/articles');
     }
+
+
+
+
+
+
+
+
+
     public function edit(Article $article){
         return view('articles.edit', compact('article'));
     }
@@ -38,7 +63,8 @@ class ArticlesController extends Controller
         return request()->validate([
             'title'=>'required',
             'excerpt'=>'required',
-            'body'=>'required'
+            'body'=>'required',
+            'tags' => 'exists:tags,id'
         ]);
     }
 }

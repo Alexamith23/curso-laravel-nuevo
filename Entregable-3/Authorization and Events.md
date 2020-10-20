@@ -135,6 +135,82 @@ Sería útil si pudiera asignar un rol a un usuario, así que, por supuesto, fin
 
 ![vagrant](user-rol.png "vagrant") 
 
+Tiene ciertas habilidades y en realidad lo mismo si tenemos un rol y queremos asignar una nueva habilidad, tal vez podríamos hacer algo como esto permitido y luego aceptamos la habilidad y serían discapacidades muy similares, guarde la habilidad bien, así que ahora un El rol tiene habilidades y puede permitir una nueva habilidad y finalmente la habilidad.
+
+![vagrant](allowTo.png "vagrant") 
+
+
+Y puede permitir una nueva habilidad y luego, por último, la habilidad que nuevamente está en el Foro o publicar contenido o eliminar registros cosas como que cada habilidad está asociada con rollos y una última cosa aquí que logré olvidar porque tenemos marcas de tiempo para Claritin nuestro Migración, necesitamos aplicarlos explícitamente para que lo hagamos aquí y luego aquí y luego, finalmente, ¿estás segura mamá y siempre olvidaste que la primera vez estamos listos para comenzar
+
+En los métodos que agregó al final agregue el código `withTimestamps`
+
+
+Volvamos a rodar y, a menudo, estableceré los campos rellenables o los campos protegidos para saber porque estoy feliz manejando que por mi cuenta también podría extenderse desde un modelo donde se sienta este club hasta tarde, solo tenga cuidado y asegúrese de saber que estas haciendo.
+
+![vagrant](guarded.png "vagrant")
+
+![vagrant](guarded_habilities.png "vagrant")
+
+Bien, así que volvamos a `php/storm`, ve a mi remodelación de uso si quiero agarrar, lo haré aquí abajo si quiero agarrar todas las habilidades y esta no es una relación elocuente, así que tenemos que llamarlo como un método estándar, pero podríamos hacer algo como esto bien, así que ahora verifique.
+
+![vagrant](function-habilities.png "vagrant")
+
+
+La página  deshacerse de todo esto está bien, así que imagina que tienes una lista de enlaces y uno de ellos será editar el formulario; sin embargo, por supuesto, solo deberías ver este enlace si tienes permiso para editar el formulario ahora que tenemos estas habilidades, pero Todavía quiero envolverlo. Me encargaría de que la funcionalidad de la puerta sea súper simple.Todavía me gusta que la directiva can pueda editar el formulario.Todavía quiero que esto funcione, así que asegurémonos de conectar estas habilidades en la funcionalidad de puerta del infierno de la guarida primero si ejecutamos esto en el navegador que no vemos.
+
+
+![vagrant](lista.png "vagrant")
+
+Voy a desplazarme hacia abajo hasta el método de arranque en el pasado, hicimos cosas como esta puerta Definir para que pueda imaginar hacer algo como tomar la capacidad de los usuarios autenticados y luego, para cada uno, básicamente, una definición dinámica con el nombre de la capacidad y usted entiendo la idea, sin embargo, puede haber algunos problemas allí porque en este punto no tenemos acceso para ser un usuario autenticado, así que en su lugar, configuremos una puerta global antes del filtro y lo aprendí de Joseph Solberg, digo que es una gran idea, así que digamos puerta antes vamos a ejecutar esto antes de cualquier autorización, por supuesto, que acepte al usuario, así como el nombre de la habilidad es recordar que la habilidad se pasaría.
+
+![vagrant](gate-before.png "vagrant")
+
+Pase por aquí el formulario de edición está bien, así que ahora en Disco se activa la parte posterior, tenemos un usuario autenticado, esta es la persona que inició sesión, pero ahora, ¿cómo verificamos si el usuario califica para discapacidad? Bueno, piénselo, tenemos una variedad de sus habilidades son correctas, entonces, ¿por qué no leemos esa matriz y verificamos si contiene la capacidad actual y devolvemos el resultado? Es tan fácil, así que ahora, si regresamos a Firefox y le damos una actualización, recuerde que es.
+
+Una vez más, nos alegramos de que ni siquiera tengamos un sistema de autenticación, simplemente diré que no inicie sesión con ID y después de que mi registro de prueba sea 13 correcto.
+
+![vagrant](login-using-id.png "vagrant")
+
+No hago nada que haría a veces, lo que hago es llamar ``async` y lo que esto hará es básicamente reemplazar todos los registros existentes en la tabla dinámica con esta colección y cualquiera que no esté incluido en esta colección pero que esté en el La base de datos se eliminará, pero en este caso no quiero eliminar nada, así que voy a establecer esto en falso y, si echan un vistazo.
+
+![vagrant](ass-role.png "vagrant")
+
+Coloque la página de bienvenida en otra aquí si y solo si puede revisar los informes, agregaré un enlace para ver los informes, no es así si vuelvo y los obtengo.
+
+![vagrant](view-re.png "vagrant")
+
+Lo están, así que asegurémonos de que cambiamos para pensar que está bien, si tengo un rol, llamemos a `sync` aquí. Es una manera fácil de resolver este problema. Bien, ahora ejecútelo nuevamente y nos dejaron allí.
+
+![vagrant](allowTo-sync.png "vagrant")
+
+
+Entonces, finalmente, si volvemos a nuestra bienvenida, no olvides recorrer los puntos finales, así que tal vez tengamos uno llamado informes y encontrarlo realmente.
+
+![vagrant](reports.png "vagrant")
+
+Llame a los informes para encontrarlo realmente rápido, por lo que si visita `/reports`, le devolveremos los informes secretos en este momento.
+
+![vagrant](get-reports.png "vagrant")
+
+¿No es que en este momento alguien puede acceder a este punto final, bloqueémoslo, solo puede acceder a este punto final si puede realizar una accion determinada 
+
+![vagrant](can2.png "vagrant")
+
+Ese es nuestro paso final y luego habremos terminado, vamos a usar su modelo y sí, aquí estábamos esperando una instancia de rol cuando decimos que no obtendremos lo que nos dio es una cadena, luego rastreemos el rol, así que todos sabemos que el nombre es roll persifor fail así y luego lo retomaremos, así que ahora regresemos.
+
+![vagrant](ass-role2.png "vagrant")
+
+Y luego, por último, algo rápido sobre el modelo a seguir, hagamos lo mismo aquí, así que si tiene un rol y desea permitir editar el formulario, podemos esperar un objeto o una cadena como ese. 
+
+![vagrant](allowTo2.png "vagrant")
+
+
+
+
+
+
+
+
 
 
 

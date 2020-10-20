@@ -41,9 +41,10 @@ Route::get('/about', function(){
     return view('about');
 });
 
-Route::get('/articles', 'ArticlesController@index')->name('articles.index');
-Route::post('/articles','ArticlesController@store');
-Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show');   
-Route::get('/articles/create', 'ArticlesController@create'); 
-Route::get('/articles/{article}/edit', 'ArticlesController@edit'); 
-Route::put('/articles/{article}', 'ArticlesController@update'); 
+// Route::get('/articles', 'ArticlesController@index')->name('articles.index');
+// Route::post('/articles','ArticlesController@store');
+// Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show');   
+// Route::get('/articles/create', 'ArticlesController@create'); 
+// Route::get('/articles/{article}/edit', 'ArticlesController@edit'); 
+// Route::put('/articles/{article}', 'ArticlesController@update'); 
+Route::post('/contact','ArticlesController@store');
